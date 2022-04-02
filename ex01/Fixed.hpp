@@ -1,6 +1,8 @@
 #ifndef FIXED_HPP
 #define FIXED_HPP
 
+#include <iostream>
+
 class Fixed
 {
 public:
@@ -18,8 +20,8 @@ public:
 	int		toInt( void ) const;
 
 private:
-	int					_value;
-	static const int	_fractional_bits = 8;
+	int					_fixed_point; // 固定小数点数(内部値)
+	static const int	_fractional_bits = 8; // 少数部のシフトするbit数
 };
 
 std::ostream &operator<<(std::ostream &lhs, const Fixed &rhs);
