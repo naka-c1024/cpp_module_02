@@ -42,7 +42,7 @@ public:
 	const static Fixed& max(const Fixed &a, const Fixed &b);
 
 private:
-	int					_fixed_point; // 固定小数点数(内部値)
+	int					_raw_bits; // 固定小数点数(内部値)
 	static const int	_fractional_bits = 8; // 少数部のシフトするbit数
 };
 
