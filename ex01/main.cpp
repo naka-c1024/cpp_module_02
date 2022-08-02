@@ -9,7 +9,8 @@ int main( void ) {
 	Fixed const d( b );
 
 	a = Fixed( 1234.4321f ); // floatコンストラクタによってaが書き変わるためデストラクタが呼ばれる
-
+	// 1234(10)->100 1101 0010(2)
+	// 0.4321(10)->0.0110 1110(2)(循環小数なので8桁で切り捨て)->0.4296875(10)
 	std::cout << "a is " << a << std::endl; // <<演算子のオーバーロード
 	std::cout << "b is " << b << std::endl;
 	std::cout << "c is " << c << std::endl;
