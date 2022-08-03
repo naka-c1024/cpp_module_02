@@ -99,6 +99,12 @@ const	Fixed Fixed::operator * ( const Fixed& obj ) const
 }
 const	Fixed Fixed::operator / ( const Fixed& obj ) const
 {
+	if (obj._raw_bits == 0) // 0除算
+	{
+		std::cerr << "floating point exception: zero divide" << std::endl;
+		std::exit(136);
+	}
+
 	Fixed	rtn;
 	rtn._raw_bits = (this->_raw_bits << this->_fractional_bits) / obj._raw_bits;
 	return rtn; // (256a * 256) / 256b = 256(a/b)

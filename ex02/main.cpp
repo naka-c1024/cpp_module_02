@@ -35,6 +35,8 @@ void	my_tests(void)
 	std::cout << "const min : " << Fixed::min(num3, num4) << std::endl;
 	std::cout << "const max : " << Fixed::max(num3, num4) << std::endl;
 
+	// Fixed	num5 = Fixed(0);
+	// std::cout << "/ : " << (num1 / num5) << std::endl; // 0除算
 }
 
 int main( void ) {
