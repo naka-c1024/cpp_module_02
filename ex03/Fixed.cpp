@@ -53,6 +53,7 @@ std::ostream &operator<<(std::ostream &lhs, const Fixed &rhs)
 	return lhs;
 }
 
+// operatorの左がthis, 右が引数
 bool	Fixed::operator == ( const Fixed& obj ) const
 {
 	return (this->_raw_bits == obj._raw_bits);
@@ -94,15 +95,22 @@ const	Fixed Fixed::operator * ( const Fixed& obj ) const
 {
 	Fixed	rtn;
 	rtn._raw_bits = (this->_raw_bits * obj._raw_bits) >> this->_fractional_bits;
-	return rtn;
+	return rtn; // (256a * 256b) / 256 = 256ab
 }
 const	Fixed Fixed::operator / ( const Fixed& obj ) const
 {
+	if (obj._raw_bits == 0) // 0除算
+	{
+		std::cerr << "floating point exception: zero divide" << std::endl;
+		std::exit(136);
+	}
+
 	Fixed	rtn;
 	rtn._raw_bits = (this->_raw_bits << this->_fractional_bits) / obj._raw_bits;
-	return rtn;
+	return rtn; // (256a * 256) / 256b = 256(a/b)
 }
 
+// (in or de)crementは数値を扱うのではなくraw_bitsを扱うだけ
 Fixed	Fixed::operator ++ (void)
 {
 	++(this->_raw_bits);
